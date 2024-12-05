@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
 
 <head>
@@ -9,30 +8,31 @@
 <body>	
 	<script>
 		function secondHighest(arr) {
-			//Write your code here
-			if(arr.length != 0 || arr.length != 1){
-				arr = arr.sort((a,b) => b-a);
-				return arr[1];
-			}else{
-				return "-Infinity";
-			}
-			
-			
+			// Convert input to integers
+			arr = arr.map(Number);
+
+			// Handle edge cases
+			if (arr.length < 2) return -Infinity;
+
+			// Find unique elements and sort them in descending order
+			let uniqueSorted = [...new Set(arr)].sort((a, b) => b - a);
+
+			// If there's only one unique element, return -Infinity
+			return uniqueSorted.length > 1 ? uniqueSorted[1] : -Infinity;
 		}
 
 		function Main() {
 			var n = prompt("Enter the number of elements");
 			var arr = [];
 			for (var i = 0; i < n; i++) {
-				arr[i] = prompt("Enter element " + (i+1));
+				arr[i] = prompt("Enter element " + (i + 1));
 			}
 			alert(secondHighest(arr));
 		}
 		Main();
 	</script>
 
-    <script type="text/javascript" src="./script.js">
-</script>
+    <script type="text/javascript" src="./script.js"></script>
 
 </body>
 
